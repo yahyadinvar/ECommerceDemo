@@ -1,0 +1,6 @@
+@ECommerceDemo.API_HostAddress = http://localhost:5089
+
+GET {{ECommerceDemo.API_HostAddress}}/api/ecommercedemo
+Accept: application/json
+
+###
