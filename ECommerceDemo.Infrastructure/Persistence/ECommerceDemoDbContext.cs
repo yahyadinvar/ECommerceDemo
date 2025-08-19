@@ -6,7 +6,7 @@ using ECommerceDemo.Infrastructure.Persistence.Helpers;
 using ECommerceDemo.Infrastructure.Persistence.Outbox;
 using Microsoft.EntityFrameworkCore;
 
-namespace ECommerceDemo.Infrastructure;
+namespace ECommerceDemo.Infrastructure.Persistence;
 
 public class ECommerceDemoDbContext : DbContext
 {

@@ -1,4 +1,5 @@
 ﻿using ECommerceDemo.Application.Abstractions.Messaging;
+using ECommerceDemo.Infrastructure.Persistence;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;

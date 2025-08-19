@@ -6,9 +6,11 @@ using ECommerceDemo.Application;
 using ECommerceDemo.Application.Abstractions.Services;
 using ECommerceDemo.Application.Behaviors;
 using ECommerceDemo.Infrastructure.Extensions.ServiceRegistration;
+using ECommerceDemo.Infrastructure.Persistence;
 using ECommerceDemo.Infrastructure.Persistence.Helpers;
 using FluentValidation;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -39,6 +41,14 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddRabbitMq(builder.Configuration);
 
 var app = builder.Build();
+
+// Start Migrations
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<ECommerceDemoDbContext>();
+    db.Database.Migrate();
+}
 
 app.UseSerilogRequestLogging();
 
