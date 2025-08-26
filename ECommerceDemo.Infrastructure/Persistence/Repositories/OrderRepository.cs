@@ -12,9 +12,9 @@ public class OrderRepository : GenericRepository<Order, Guid>, IOrderRepository
         _dbContext = dbContext;
     }
 
-    public async Task<Order> GetOrderByUserIdAsync(string userId)
+    public async Task<List<Order>> GetOrdersByUserIdAsync(string userId)
     {
-        return await _dbContext.Orders.FirstOrDefaultAsync(u => u.UserId == userId);
+        return await _dbContext.Orders.Where(u => u.UserId == userId).ToListAsync();
     }
 
 }

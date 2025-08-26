@@ -2,9 +2,9 @@
 
 namespace ECommerceDemo.Application.Features.Order.GetOrderByUserId;
 
-public sealed class GetOrderByUserIdQueryValidator : AbstractValidator<GetOrderByUserIdQuery>
+public sealed class GetOrdersByUserIdQueryValidator : AbstractValidator<GetOrdersByUserIdQuery>
 {
-    public GetOrderByUserIdQueryValidator()
+    public GetOrdersByUserIdQueryValidator()
     {
         RuleFor(command => command.UserId).NotEmpty().WithMessage("UserId alanı boş olamaz.");
     }

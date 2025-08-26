@@ -2,7 +2,7 @@
 
 namespace ECommerceDemo.Application.Features.Order.GetOrderByUserId;
 
-public class GetOrderByUserIdQuery : IQuery<GetOrderByUserIdQueryResponse>
+public class GetOrdersByUserIdQuery : IQuery<List<GetOrdersByUserIdQueryResponse>>
 {
     public string UserId { get; set; }
 }

@@ -12,6 +12,7 @@ using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,7 @@ builder.Services.AddSwagger();
 builder.Services.AddHttpContextAccessor(); // IHttpContextAccessor için
 builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
 builder.Services.AddScoped<AuditFieldSetter>();
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp => ConnectionMultiplexer.Connect(builder.Configuration["Redis:ConnectionString"]));
 builder.Services.AddRepositories(builder.Configuration);
 builder.Services.AddJwtAuth(builder.Configuration);
 builder.Services.AddMediatR(typeof(ApplicationAssembly).Assembly);

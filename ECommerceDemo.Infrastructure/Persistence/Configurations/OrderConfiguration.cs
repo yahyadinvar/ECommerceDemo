@@ -20,8 +20,8 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.Property(u => u.Quantity)
             .IsRequired();
 
-        builder.HasIndex(u => u.PaymentMethod)
-            .IsUnique();
+        builder.Property(u => u.PaymentMethod)
+            .IsRequired();
 
         builder.ConfigureAuditableProperties<Order, Guid>();
     }

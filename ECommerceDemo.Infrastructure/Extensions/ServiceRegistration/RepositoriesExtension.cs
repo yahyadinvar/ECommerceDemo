@@ -5,6 +5,7 @@ using ECommerceDemo.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 
 namespace ECommerceDemo.Infrastructure.Extensions.ServiceRegistration;
 
@@ -25,6 +26,7 @@ public static class RepositoriesExtension
         services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
         services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
         services.AddScoped(typeof(IOrderRepository), typeof(OrderRepository));
+        services.AddScoped(typeof(ICacheRepository), typeof(CacheRepository));
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;

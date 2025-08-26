@@ -10,6 +10,6 @@ public class MappingProfile: Profile
     public MappingProfile()
     {
         CreateMap<Order, CreateOrderCommandResponse>().ReverseMap();
-        CreateMap<Order, GetOrderByUserIdQueryResponse>().ReverseMap();
+        CreateMap<Order, GetOrdersByUserIdQueryResponse>().ReverseMap();
     }
 }

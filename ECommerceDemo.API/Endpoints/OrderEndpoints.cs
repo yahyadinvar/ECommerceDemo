@@ -17,9 +17,9 @@ public static class OrderEndpoints
             return result.ToActionResult();
         }).RequireAuthorization();
 
-        group.MapGet("/get-order-by-userId", async (string userId, ISender sender) =>
+        group.MapGet("/get-orders-by-userId", async (string userId, ISender sender) =>
         {
-            var result = await sender.Send(new GetOrderByUserIdQuery { UserId = userId });
+            var result = await sender.Send(new GetOrdersByUserIdQuery { UserId = userId });
             return result.ToActionResult();
         }).RequireAuthorization();
 

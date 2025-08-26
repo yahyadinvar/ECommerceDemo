@@ -10,12 +10,14 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Cre
     private readonly IOrderRepository _orderRepository;
     private readonly IMapper _mapper;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly ICacheRepository _cacheRepository;
 
-    public CreateOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper, IUnitOfWork unitOfWork)
+    public CreateOrderCommandHandler(IOrderRepository orderRepository, IMapper mapper, IUnitOfWork unitOfWork, ICacheRepository cacheRepository)
     {
         _orderRepository = orderRepository;
         _mapper = mapper;
         _unitOfWork = unitOfWork;
+        _cacheRepository = cacheRepository;
     }
     public async Task<Result<CreateOrderCommandResponse>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
@@ -24,6 +26,9 @@ public class CreateOrderCommandHandler : ICommandHandler<CreateOrderCommand, Cre
 
         await _orderRepository.AddAsync(order);
         await _unitOfWork.SaveChangesAsync();
+
+        // Cache invalidate
+        await _cacheRepository.RemoveAsync($"orders:{request.UserId}");
 
         return Result<CreateOrderCommandResponse>.Success(_mapper.Map<CreateOrderCommandResponse>(order));
     }
