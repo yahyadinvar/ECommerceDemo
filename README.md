@@ -14,6 +14,7 @@
 - Result Pattern: Sonuçları yönetmek için kullanıldı.
 - Repository ve Unit of Work Pattern: Veri erişim katmanı için generic repository ve unit of work kullanıldı.
 - SQL Server + Code First Migrations: Database yapısı migration ile otomatik oluşturuldu.
+- Serilog: Loglama için kullanıldı.
 - Redis-Docker : Cache için redis kullanıldı, docker'da ayağa kaldırıldı.
 
   *** Uygulama Kullanırken Dikkat Edilmesi Gerekenler
