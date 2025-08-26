@@ -14,11 +14,13 @@
 - Result Pattern: Sonuçları yönetmek için kullanıldı.
 - Repository ve Unit of Work Pattern: Veri erişim katmanı için generic repository ve unit of work kullanıldı.
 - SQL Server + Code First Migrations: Database yapısı migration ile otomatik oluşturuldu.
+- Redis-Docker : Cache için redis kullanıldı, docker'da ayağa kaldırıldı.
 
   *** Uygulama Kullanırken Dikkat Edilmesi Gerekenler
   - Uygulama içerisindeki appsettings.development.json dosyasındaki sql server ayarlarını kendi bilgilerinize göre ayarlayınız.
-  - API katmanı seçilerek uygulama ayağa kaldırıldığında migration'lar otomatik çalışacak ve db seçtiğiniz adreste oluşacaktır.
-  - Sonrasında arayüzden ...swagger/index.html'e giderek Register endpoint'i ile uygulamaya kayıt olunuz.
+  - API ve Worker (consumer simulasyonu için) katmanı multiple seçilerek uygulama ayağa kaldırıldığında migration'lar otomatik çalışacak ve db seçtiğiniz adreste oluşacaktır.
+  - Redis configurasyonu için, önerilen yöntem docker kurulmalı sonrasında; 'docker run -d --name my_redis -p 6379:6379 redis' komutu çalıştırılıp default portunda ayağa kaldırılmalı. Demo uygulamada cache mekanizmasının düzgün çalışması için yeterli olacaktır.
+  - Sonrasında api arayüzden https://localhost:7038/swagger/index.html'e giderek Register endpoint'i ile uygulamaya kayıt olunuz.
   - Daha sonra kayıt olduğunuz email adresi ve şifreniz ile Login endpoint'ini kullanarak sistemden token bilgisini alınız.
   - Bu token bilgisi ile sağ üstteki girişten Bearer token girişi yapınız.
   - Bu işlemler sonucunda uygulamaya giriş yapmış ve yetkilendirme almış olacağınızdan kilitli olan diğer endpoint'leri de test edebilirsiniz.
