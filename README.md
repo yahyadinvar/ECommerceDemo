@@ -1,6 +1,6 @@
 # ECommerceDemo
 Özellikler ve Kullanılan Tasarım Desenleri
-- Clean Architecture - DDD : Proje katmanlı ve bağımsız bir yapı ile tasarlandı.
+- Clean Architecture - Vertical Slice Architecture - DDD : Proje katmanlı ve bağımsız bir yapı ile tasarlandı.
 - Minimal API: Controller yerine minimal API endpointleri kullanıldı.
 - CQRS ve MediatR : Command ve Query ayrımı yapıldı, MediatR ile işlemler yönetildi.
 - Validation ve Logging Behaviors: FluentValidation ile request validation, logging behavior ile loglama sağlandı.
